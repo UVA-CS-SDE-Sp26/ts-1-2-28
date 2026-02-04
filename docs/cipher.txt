@@ -1,0 +1,18 @@
+
+to write:
+char method (char x)
+char method (char x, file or string key2.txt)
+
+takes a character, or a character and a text file (in a certain format)
+returns the character deciphered
+
+the character has an index in the key file based on ASCII value ((int) character - 65 +/- 32 ;
+    //the key is in opposite order to ASCII) plus 53 (26 + 26 + a new-line)
+
+
+Do I have to parse the key-file (either of them) into data?
+Do I have a separate function that runs my decryption method on every character in the file, or is
+    that step in Student B's class?
+Presumably the file parsing is in the file-parser class (Student B), but then am I getting passed
+    a string/two strings or a character?
+

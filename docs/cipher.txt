@@ -7,7 +7,7 @@ takes a character, or a character and a text file (in a certain format)
 returns the character deciphered
 
 the character has an index in the key file based on ASCII value ((int) character - 65 +/- 32 ;
-    //the key is in opposite order to ASCII) plus 53 (26 + 26 + a new-line)
+    //the key is in opposite order to ASCII) plus 53 (26 + 26 + a new-line).
 
 
 Do I have to parse the key-file (either of them) into data?

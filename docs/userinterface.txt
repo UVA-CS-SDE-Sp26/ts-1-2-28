@@ -8,7 +8,7 @@ command prompt options:
 
  - java topsecret: list the number files available to display
  - java topsecret [num]: when it has a number as an argument, the content of the specified file is displayed using default deciphering key
- - java topsecret [num] [num of key?]: when it also has a second number as an argument, the content of the specified file is displayed using an alternate deciphering key
+ - java topsecret [num] [.txt file]: when it also has a .txt as a second argument, the content of the specified file is displayed using the alternate deciphering key
 
 
 --------------------------------------------------------------------------------------------------------------------------

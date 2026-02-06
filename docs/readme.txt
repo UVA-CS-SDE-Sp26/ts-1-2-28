@@ -12,7 +12,6 @@ If a number and a .txt file: validate the number, validate the .txt file, and di
     (decrypted using the key in the .txt file) contents of the associated .txt file in the same
     terminal window
 
-As I understand it:
 Student A writes a class (possibly the main function) that calls Student C's class, which calls
     Student B's class, which calls Student D's class. Student D's class returns a data type that
     Student B's class uses and returns to Student C's class, which returns to Student A's class,

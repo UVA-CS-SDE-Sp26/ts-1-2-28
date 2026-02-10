@@ -1,0 +1,25 @@
+PROGRAM BEHAVIOR DESIGN:
+- the program will receive a request for a file
+- the program will locate the file in a folder named 'data'
+- the program will return the file contents as a String
+- if the program receives an invalid file request, it will return a blank string
+    and print error message
+- if the program receives an empt
+
+TESTS:
+- tests running the program for each available file
+- test for invalid file request
+- test for returning filelist
+
+TO WRITE:
+- filereturn(String filenumber)
+    - where filenumber is number corresponding to specific file (number corresponds
+        order to files)
+        01 filea.txt
+        02 fileb.txt
+        03 filec.txt
+
+- filelist()
+    - where it will return list in form:
+        [filea.txt, fileb.txt, filec.txt]
+

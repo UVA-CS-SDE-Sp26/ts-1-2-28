@@ -1,1 +1,35 @@
-hello testing
+You are responsible for the command line interface used by the user to run the program.
+Create a file, userinterface.txt, in the docs folder to document the user interface. (the command prompt options)
+
+---------------------------------------------------------------------------------------------------------------------------
+
+command prompt options:
+ - java topsecret: program should be run from the class "TopSecret" using this command
+
+ - java topsecret: list the number files available to display
+ - java topsecret [num]: when it has a number as an argument, the content of the specified file is displayed using default deciphering key
+ - java topsecret [num] [.txt file]: when it also has a .txt as a second argument, the content of the specified file is displayed using the alternate deciphering key
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+ what this should do:
+
+ - when the program runs with no arguments, it should list the number files available to display:
+ex:
+        01 filea.txt
+        02 fileb.txt
+        03 filec.txt
+
+- when the program runs with a number as an argument, the contents of the corresponding file is displayed on screen:
+ex:
+        java topsecret 01
+        (this displays on screen the contents of the file filea.txt)
+
+program exits after showing the file list, the contents of an indicated file, or after displaying an error message
+
+
+- if no second parameter, program uses the default key for deciphering.
+
+- if there is a second parameter, program uses it to specify an alternate key to use for deciphering

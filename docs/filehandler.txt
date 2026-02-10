@@ -12,14 +12,14 @@ TESTS:
 - test for returning filelist
 
 TO WRITE:
-- filereturn(String filenumber)
+- fileReturn(String filenumber) -- RETURNS file contents in String
     - where filenumber is number corresponding to specific file (number corresponds
         order to files)
         01 filea.txt
         02 fileb.txt
         03 filec.txt
 
-- filelist()
+- fileList() -- RETURNS list of file titles
     - where it will return list in form:
         [filea.txt, fileb.txt, filec.txt]
 

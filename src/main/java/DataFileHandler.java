@@ -1,49 +1,48 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.io.File;
 
-public class DataFileHandler implements FileHandler {
-    private final String directoryPath;
+public class DataFileHandler {
 
-    public DataFileHandler() {
-        this.directoryPath = "./data";
-    }
-
-    public DataFileHandler(String directoryPath) {
-        this.directoryPath = directoryPath;
-    }
-
-    @Override
-    public String fileReturn(String n) {
+    public static String fileReturn(String n) {
         // use n -> to int, find number in list from fileList
         // return data from that file
+        String directoryPath = "./data";
+        String returnString = "";
         try {
             int index = Integer.parseInt(n)-1;
             List<String> files = fileList();
 
             if (index < 0 || index >= files.size()) {
-                System.err.println("Invalid file number");
+                System.out.println("Invalid file number");
                 return "";
             }
-            Path filePath = Paths.get(directoryPath, files.get(index));
-            return new String(Files.readAllBytes(filePath));
 
-        } catch (NumberFormatException e) {
-            System.err.println("Invalid file number format");
+            File targetFile = new File(directoryPath, files.get(index));
+            try (BufferedReader bufferedTestFileReader = new BufferedReader(new FileReader(targetFile))) {
+
+                String line = "";
+                while ((line = bufferedTestFileReader.readLine()) != null) {
+                    returnString = returnString + line;
+                    returnString = returnString + "\n";
+                }
+            }
+
         } catch (IOException e) {
-            System.err.println("Error reading file");
+            System.out.println("Error reading file" +  e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid file number format");
         }
 
-        return "";
+        return returnString;
     }
 
-    @Override
-    public List<String> fileList() {
+    public static List<String> fileList() {
+        String directoryPath = "./data";
         File dir  = new File(directoryPath);
         String[] filesNames = dir.list();
 
@@ -59,6 +58,5 @@ public class DataFileHandler implements FileHandler {
         return fileList;
 
     }
-
 
 }

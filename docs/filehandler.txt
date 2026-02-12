@@ -4,7 +4,6 @@ PROGRAM BEHAVIOR DESIGN:
 - the program will return the file contents as a String
 - if the program receives an invalid file request, it will return a blank string
     and print error message
-- if the program receives an empt
 
 TESTS:
 - tests running the program for each available file

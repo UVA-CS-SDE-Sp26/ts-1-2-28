@@ -4,7 +4,9 @@
 public class TopSecret {
     public static void main(String[] args) {
         if (args.length == 0) { // no arguments = list the available files
+
             // list files to display
+
             return;
         }
         else if (args.length == 1) { // 1 argument = show specified file using the default decipher key
@@ -16,6 +18,7 @@ public class TopSecret {
             }
 
             // display file with deciphered text (using default key)
+
             return;
         }
         else if (args.length == 2) { // 2 arguments = show specified file using the custom decipher key
@@ -34,6 +37,7 @@ public class TopSecret {
             }
 
             // display file with deciphered text (using custom key)
+
             return;
         }
         else {

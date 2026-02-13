@@ -1,5 +1,7 @@
 //Team Member C: Program Controller
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.List;
 
 public class ProgramControl {
@@ -52,10 +54,20 @@ public class ProgramControl {
                 return;
             }
 
-            String readable = new Cipher().decrypt(content, fileKey);
+            String readable = Cipher.decrypt(content, parseKey(fileKey));
             System.out.println(readable);
         } catch (IllegalArgumentException e) {
             System.out.println("error reading or deciphering file: " + e.getMessage());
+        }
+    }
+    private static String parseKey (String fileName){
+        try (BufferedReader bufferedTestFileReader = new BufferedReader(new FileReader(targetFile))) {
+
+            String line = "";
+            while ((line = bufferedTestFileReader.readLine()) != null) {
+                returnString = returnString + line;
+                returnString = returnString + "\n";
+            }
         }
     }
 

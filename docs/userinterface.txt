@@ -33,3 +33,17 @@ ex:
 - if there are more than two parameters, the program displays an error message with the options of correct command prompts.
 
 - program exits after showing the file list, the contents of an indicated file, or after displaying an error message
+
+-----------------------------------------------------------------------------------------------------------------------
+TESTS:
+- for one argument
+    - test if properly invalid if given a number that is one digit
+    - test if properly invalid if given a number that is three digits
+    - test if properly invalid if given an input that isn't a number (ex some word)
+- for two arguments
+    - test if properly invalid + prints right error if given a number that isn't two digits
+    - test if properly invalid + prints right error if given a file that doesn't end in .txt
+    - test if properly invalid + prints right error if given a number that isn't two digits and a file that doesn't end in .txt
+- for more than two arguments
+    - test if properly invalid if given two correct inputs and one extra (correct syntax) input
+    - test if properly invalid if given three invalid inputs (incorrect syntax for all)

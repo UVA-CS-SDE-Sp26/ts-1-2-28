@@ -1,3 +1,5 @@
+import java.io.File;
+
 /**
  * Commmand Line Utility
  */
@@ -5,7 +7,7 @@ public class TopSecret {
     public static void main(String[] args) {
         if (args.length == 0) { // no arguments = list the available files
 
-            // list files to display
+            ProgramControl.runNoArguments(); // list files to display
 
             return;
         }
@@ -17,7 +19,7 @@ public class TopSecret {
                 return;
             }
 
-            // display file with deciphered text (using default key)
+            ProgramControl.runOneArgument(fileNumber); // display file with deciphered text (using default key)
 
             return;
         }
@@ -36,7 +38,7 @@ public class TopSecret {
                 return;
             }
 
-            // display file with deciphered text (using custom key)
+            ProgramControl.runTwoArguments(fileNumber, new File(decipherKey));// display file with deciphered text (using custom key)
 
             return;
         }

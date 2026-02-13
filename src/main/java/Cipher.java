@@ -70,7 +70,8 @@ public class Cipher {
         return x;
     }
 
-    private static boolean verifyKey(String key2) {
+    //return true if the key is valid, return false otherwise
+    public static boolean verifyKey(String key2) {
         int newlineIndex = key2.indexOf("\n");
 
         if (newlineIndex != -1) {

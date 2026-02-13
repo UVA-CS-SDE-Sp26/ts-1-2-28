@@ -2,6 +2,7 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class ProgramControl {
@@ -60,15 +61,21 @@ public class ProgramControl {
             System.out.println("error reading or deciphering file: " + e.getMessage());
         }
     }
-    private static String parseKey (String fileName){
-        try (BufferedReader bufferedTestFileReader = new BufferedReader(new FileReader(targetFile))) {
+
+    private static String parseKey (String fileKey){
+        String returnString = "";
+        try (BufferedReader bufferedTestFileReader = new BufferedReader(new FileReader(fileKey))) {
 
             String line = "";
             while ((line = bufferedTestFileReader.readLine()) != null) {
                 returnString = returnString + line;
                 returnString = returnString + "\n";
             }
+        } catch (IOException e) {
+            System.out.println("Error reading file" + e.getMessage());
         }
+
+        return returnString;
     }
 
 }

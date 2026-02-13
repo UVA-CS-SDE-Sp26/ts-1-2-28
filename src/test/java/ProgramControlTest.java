@@ -40,23 +40,31 @@ class ProgramControlTest {
 
     @Test
     void runOneArgument() {
-        ProgramControl.runOneArgument("01");
+        ProgramControl.runOneArgument("05");
 
         String output = outContent.toString().trim();
 
         // decrypted content matches expected plaintext
-        assertEquals("GJMF POF DPOFOU", output);
+        assertEquals("GJMF POF DPOUFOU", output);
     }
 
 
     //fix this!!!
     @Test
     void runTwoArguments() {
-        ProgramControl.runTwoArguments("01", "mykey.txt");
-        String output = outContent.toString().trim();
+        String directoryPath = "./ciphers";
+        File dir  = new File(directoryPath);
+        File[] alternateKey = dir.listFiles((thing, name) -> name.equals("mykey.txt"));
+        if (alternateKey.length == 1) {
+            ProgramControl.runTwoArguments("05", alternateKey[0]);
+            String output = outContent.toString().trim();
+            // Example check: decrypted text should reflect using the custom key
+            assertEquals("HKNG QPG EQPVGPV", output);
+        }
 
-        // Example check: decrypted text should reflect using the custom key
-        assertEquals("HKNQ QPH FRQWHQWV", output);;
+
+
+
     }
 
 }

@@ -2,6 +2,7 @@
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ProgramControl {
             }
 
             // Decipher using default key
-            String readable = new Cipher().decrypt(content); // call instance method
+            String readable = Cipher.decrypt(content); // call instance method
             System.out.println(readable);
         } catch (IllegalArgumentException e) {
             System.out.println("error reading file: " + e.getMessage());
@@ -46,7 +47,7 @@ public class ProgramControl {
     }
 
     // called by A when 2 arguments: file with custom key
-    public static void runTwoArguments(String fileNumber, String fileKey) {
+    public static void runTwoArguments(String fileNumber, File fileKey) {
         try {
             String content = DataFileHandler.fileReturn(fileNumber);
 
@@ -54,7 +55,6 @@ public class ProgramControl {
                 System.out.println("file is empty or not found");
                 return;
             }
-
             String readable = Cipher.decrypt(content, parseKey(fileKey));
             System.out.println(readable);
         } catch (IllegalArgumentException e) {
@@ -62,7 +62,7 @@ public class ProgramControl {
         }
     }
 
-    private static String parseKey (String fileKey){
+    private static String parseKey (File fileKey){
         String returnString = "";
         try (BufferedReader bufferedTestFileReader = new BufferedReader(new FileReader(fileKey))) {
 
@@ -70,6 +70,9 @@ public class ProgramControl {
             while ((line = bufferedTestFileReader.readLine()) != null) {
                 returnString = returnString + line;
                 returnString = returnString + "\n";
+            }
+            if (returnString.charAt(returnString.length()-1) == '\n'){
+                returnString = returnString.substring(0, returnString.length() - 1);
             }
         } catch (IOException e) {
             System.out.println("Error reading file" + e.getMessage());

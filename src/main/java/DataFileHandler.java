@@ -54,6 +54,7 @@ public class DataFileHandler {
         for (String fileName : filesNames) {
             fileList.add(fileName);
         }
+        Collections.sort(fileList);
 
         return fileList;
 

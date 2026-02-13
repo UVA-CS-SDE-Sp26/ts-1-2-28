@@ -8,9 +8,18 @@ public class DataFileHandlerTest {
 
     @Test
     void fileReturn_returnsCorrectContents() {
-        assertEquals("FILE ONE CONTENT", DataFileHandler.fileReturn("01").trim());
-        assertEquals("FILE TWO CONTENT", DataFileHandler.fileReturn("02").trim());
-        assertEquals("FILE THREE CONTENT", DataFileHandler.fileReturn("03").trim());
+        assertEquals("Dbsojwpsf, mbufs sfobnfe EDT2aaa, xbt b tztufn jnqmfnfoufe cz uif Gfefsbm Cvsfbv pg Jowftujhbujpo (GCJ) uibu xbt\n" +
+                "eftjhofe up npojups fnbjm boe fmfduspojd dpnnvojdbujpot. Ju vtfe b dvtupnjAbcmf qbdlfu tojggfs uibu dpvme npojups bmm\n" +
+                "pg b ubshfu vtfs't Joufsofu usbggjd. Dbsojwpsf xbt jnqmfnfoufe jo Pdupcfs 2008. Cz 3aa6 ju ibe cffo sfqmbdfe xjui\n" +
+                "jnqspwfe dpnnfsdjbm tpguxbsf.", DataFileHandler.fileReturn("01").trim());
+        assertEquals("Carnivore, later renamed DCS1000, was a system implemented by the Federal Bureau of Investigation (FBI) that was\n" +
+                "designed to monitor email and electronic communications. It used a customizable packet sniffer that could monitor all\n" +
+                "of a target user's Internet traffic. Carnivore was implemented in October 1997. By 2005 it had been replaced with\n" +
+                "improved commercial software.", DataFileHandler.fileReturn("02").trim());
+        assertEquals("DPJOUFMQSP (b tzmmbcjd bccsfwjbujpo efsjwfe gspn Dpvoufs Joufmmjhfodf Qsphsbn) xbt b tfsjft pg dpwfsu boe jmmfhbm\n" +
+                "qspkfdut dpoevdufe cfuxffo 2067 boe 2082 cz uif Vojufe Tubuft Gfefsbm Cvsfbv pg Jowftujhbujpo (GCJ) bjnfe bu\n" +
+                "tvswfjmmjoh, jogjmusbujoh, ejtdsfejujoh, boe ejtsvqujoh Bnfsjdbo qpmjujdbm qbsujft boe pshbojAbujpot uibu uif GCJ\n" +
+                "qfsdfjwfe bt tvcwfstjwf.", DataFileHandler.fileReturn("03").trim());
     }
     @Test
     void fileReturn_invalidIndex() {
@@ -25,9 +34,9 @@ public class DataFileHandlerTest {
     @Test
     void fileList_returnsList() {
         List<String> list = DataFileHandler.fileList();
-        assertEquals(3, list.size());
-        assertTrue(list.contains("file1.txt"));
-        assertTrue(list.contains("file2.txt"));
-        assertTrue(list.contains("file3.txt"));
+        assertEquals(4, list.size());
+        assertTrue(list.contains("carnivore.txt"));
+        assertTrue(list.contains("cointelpro.txt"));
+        assertTrue(list.contains("carnivore.cip"));
     }
 }

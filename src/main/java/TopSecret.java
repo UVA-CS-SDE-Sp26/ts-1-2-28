@@ -5,7 +5,7 @@ public class TopSecret {
     public static void main(String[] args) {
         if (args.length == 0) { // no arguments = list the available files
 
-            ProgramControl.runNoArguments(); // list files to display
+            // list files to display
 
             return;
         }
@@ -17,7 +17,7 @@ public class TopSecret {
                 return;
             }
 
-            ProgramControl.runOneArgument(fileNumber); // display file with deciphered text (using default key)
+            // display file with deciphered text (using default key)
 
             return;
         }
@@ -26,19 +26,17 @@ public class TopSecret {
             String fileNumber = args[0];
             String decipherKey = args[1];
 
-            if (!fileNumber.matches("\\d{2}") && (!decipherKey.endsWith(".txt"))) {
-                System.out.println("error: file number must be two digits (ex. 01, 10 AND decipher key must be a string that ends in .txt (ex. key.txt)");
-            }
-            else if (!fileNumber.matches("\\d{2}")) {
+            if (!fileNumber.matches("\\d{2}")) {
                 System.out.println("error: file number must be two digits (ex. 01, 10");
                 return;
             }
-            else if (!decipherKey.endsWith(".txt")) {
-                System.out.println("error: decipher key must be a string that ends in .txt (ex. key.txt)");
+
+            if (!decipherKey.endsWith(".txt")) {
+                System.out.println("error: decipher key must be a string that ends in .txt (ex. key.txt");
                 return;
             }
 
-            ProgramControl.runTwoArguments(fileNumber, decipherKey); // display file with deciphered text (using custom key)
+            // display file with deciphered text (using custom key)
 
             return;
         }

@@ -23,24 +23,30 @@ public class TopSecret {
 
             return;
         }
-        else if (args.length == 2) { // 2 arguments = show specified file using the custom decipher key
+        else if (args.length == 2) {
 
-            String fileNumber = args[0];
-            String decipherKey = args[1];
+            boolean validNumber = args[0].matches("\\d{2}");
+            boolean validFile = args[1].endsWith(".txt");
 
-            if (!fileNumber.matches("\\d{2}")) {
-                System.out.println("error: file number must be two digits (ex. 01, 10");
-                return;
+            if (!validNumber && !validFile) {
+                System.out.println("error: file number must be two digits (ex. 01, 10 AND decipher key must be a string that ends in .txt (ex. key.txt)");
             }
-
-            if (!decipherKey.endsWith(".txt")) {
-                System.out.println("error: decipher key must be a string that ends in .txt (ex. key.txt");
-                return;
+            else if (!validNumber) {
+                System.out.println("error: file number must be two digits");
             }
+            else if (!validFile) {
+                System.out.println("error: decipher key must be a string that ends in .txt (ex. key.txt)");
+            }
+            else {
+                ProgramControl.runTwoArguments(args[0], args[1]);
+            }
+<<<<<<< Updated upstream
 
             ProgramControl.runTwoArguments(fileNumber, new File(decipherKey));// display file with deciphered text (using custom key)
 
             return;
+=======
+>>>>>>> Stashed changes
         }
         else {
             if (args.length > 2) {

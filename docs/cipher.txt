@@ -1,21 +1,15 @@
-String decipher-method (String data, String key2) {run method (char, key2)}
+String decipher-method (String data, String key) {run method (char, key)}
     takes a string and runs the char decipher-method for every character in the length
         (for loop, string.IndexAt(i)) (ignore spaces and newlines)
 
-char decipher-method (char x, String key2)
-    takes a character, or a character and a text file (in a certain format)
+char decipher-method (char x, String key)
+    takes a character, or a character and a text file converted to String (in a certain format)
     returns the character deciphered
 
+boolean verify-key (String key)
+    takes a key String and checks it's in the right format
 
-the character has an index in the key file based on ASCII value ((int) character - 65 +/- 32 ;
-    //the key is in opposite order to ASCII) plus 53 (26 + 26 + a new-line).
-    do something for numbers... or just string.charAt(key.getIndexOf(char) + (53+ #numbers))
-
-have an Interface (with two String methods)
-test methods: test string methods by mocking the char methods? definitely mocking the input strings.
-For the string method: A mock input string is passed into the string function and it calls the mock
-char function, which is essentially return an array of characters one at a time
-For the char method: A
+the character has an index in the key file (key.IndexOf(character) + key.IndexOf(newline))
 
 
 Do I have to parse the key-file (either of them) into data? no
@@ -29,6 +23,17 @@ and numbers check for the uppercase and each other up until the newline too (so 
 uppercase, lowercase, numbers but the provided keys could be just one of each or have 2 or 3 in
 any order). Keys with incomplete lowercase sections (or uppercase, or numbers) have all those
 characters ignored when that key is applied (and the decrypt method accounts for that)
+
+test verifying keys (15) with only:
+numbers, lower, or upper
+numbers and lower, numbers and upper, lower and upper
+lower and numbers, upper and numbers, upper and lower
+lower, upper, numbers; lower, numbers, upper;
+upper, lower, numbers; upper, numbers, lower;
+numbers, upper, lower; numbers, lower, upper;
+incomplete numbers, incomplete upper, incomplete lower
+
+test decrypts with data strings that include lots of new-lines and spaces
 
 
 

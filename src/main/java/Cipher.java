@@ -47,7 +47,7 @@ public class Cipher {
             return decryptString;
         }
         else {
-            return decrypt(data);
+            return data;
         }
     }
     private static char decryptCharacter (char x, String key){
@@ -126,6 +126,7 @@ public class Cipher {
             return false;
         }
     }
+
     private static String fileReturn(String n) {//from DataFileHandler class, because that was hardcoded to only run from the docs folder
         // use n -> to int, find number in list from fileList
         // return data from that file

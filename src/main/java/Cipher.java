@@ -16,6 +16,7 @@ import java.util.List;
 public class Cipher {
     public static String decrypt (String data) {
         String key = fileReturn("1");
+        key = key.substring (0,key.length() - 1);//peculiarity of the file handler, remove the last newline
         return decrypt(data, key);
     }
     public static String decrypt (String data, String key){
@@ -27,7 +28,7 @@ public class Cipher {
                     decryptString = decryptString + decryptCharacter(data.charAt(i), key);
                     i++;
                 }
-                else if (data.substring(i,i+2).equals("/n")){
+                else if (data.substring(i,i+2).equals("\n")){
                     decryptString += data.substring(i,i+2);
                     i = i + 2;
                 }
@@ -49,16 +50,16 @@ public class Cipher {
     }
     private static char decryptCharacter (char x, String key){
         //If character is not in key, just return it, otherwise decrypt it
-        String secureKey = key.substring(0,key.indexOf("/n"));
+        String secureKey = key.substring(0,key.indexOf("\n"));
         if (secureKey.indexOf(x) != -1) {
             if (((int) x < 123) && ((int) x > 47)) {
                 try {
                     if ((int) x < 58) {//x is a number
-                        return key.charAt(key.indexOf("/n") + 2 + secureKey.indexOf(x));
+                        return key.charAt(key.indexOf("\n") + 1 + secureKey.indexOf(x));
                     } else if (((int) x < 91) && ((int) x > 64)) { // x is uppercase
-                        return key.charAt(key.indexOf("/n") + 2 + secureKey.indexOf(x));
+                        return key.charAt(key.indexOf("\n") + 1 + secureKey.indexOf(x));
                     } else if ((int) x > 96) {//x is lowercase
-                        return key.charAt(key.indexOf("/n") + 2 + secureKey.indexOf(x));
+                        return key.charAt(key.indexOf("\n") + 1 + secureKey.indexOf(x));
                     }
                 }
                 catch (StringIndexOutOfBoundsException e) {
@@ -70,10 +71,10 @@ public class Cipher {
     }
 
     private static boolean verifyKey(String key2) {
-        int newlineIndex = key2.indexOf("/n");
+        int newlineIndex = key2.indexOf("\n");
 
         if (newlineIndex != -1) {
-            if (key2.substring(0, newlineIndex).length() != key2.substring(newlineIndex + 2).length())
+            if (key2.substring(0, newlineIndex).length() != key2.substring(newlineIndex + 1).length())
                 return false;
             if (key2.startsWith("1234567890")){
                 String remaining = key2.substring(10,newlineIndex);
@@ -85,7 +86,7 @@ public class Cipher {
                     String stillRemaining = remaining.substring(26,newlineIndex - 10);
                     return stillRemaining.equals("ABCDEFGHIJKLMNOPQRSTUVWXYZ") || stillRemaining.isEmpty();
                 }
-                else if (remaining.equals("")) {return true;}
+                else if (remaining.isEmpty()) {return true;}
                 else {return false;}
             }
             else if (key2.startsWith("ABCDEFGHIJKLMNOPQRSTUVWXYZ")){
@@ -98,7 +99,7 @@ public class Cipher {
                     String stillRemaining = remaining.substring(26, newlineIndex - 26);
                     return stillRemaining.equals("1234567890") || stillRemaining.isEmpty();
                 }
-                else if (remaining.equals("")) {return true;}
+                else if (remaining.isEmpty()) {return true;}
                 else {return false;}
             }
             else if (key2.startsWith("abcdefghijklmnopqrstuvwxyz")){
@@ -111,7 +112,7 @@ public class Cipher {
                     String stillRemaining = remaining.substring(26, newlineIndex - 26);
                     return stillRemaining.equals("1234567890") || stillRemaining.isEmpty();
                 }
-                else if (remaining.equals("")) {return true;}
+                else if (remaining.isEmpty()) {return true;}
                 else {return false;}
             }
             else {

@@ -39,4 +39,11 @@ public class DataFileHandlerTest {
         assertTrue(list.contains("cointelpro.txt"));
         assertTrue(list.contains("carnivore.cip"));
     }
+
+    @Test
+    void fileList_returnsFullList() {
+        List<String> list = DataFileHandler.fileList();
+        System.out.println(list);
+        assertEquals(5, list.size());
+    }
 }

@@ -20,7 +20,7 @@ public class Cipher {
         return decrypt(data, key);
     }
 
-    //for a valid key, returns a decrypted string. for an invalid key, decrypts using the default key
+    //for a valid key, returns a decrypted string. for an invalid key, returns data undecrypted
     public static String decrypt (String data, String key){
         if (verifyKey(key)) {
             String decryptString = "";

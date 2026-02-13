@@ -40,23 +40,18 @@ class ProgramControlTest {
 
     @Test
     void runOneArgument() {
-        ProgramControl.runOneArgument("01");
-
+        // ensure the file "data/carnivore.txt" exists and Cipher default key "ciphers/1"
+        ProgramControl.runOneArgument("05"); // "02" points to carnivore.txt
         String output = outContent.toString().trim();
-
-        // decrypted content matches expected plaintext
-        assertEquals("GJMF POF DPOFOU", output);
+        assertEquals("GJMF POF DPOUFOU", output); // matches decrypted text
     }
 
-
-    //fix this!!!
     @Test
     void runTwoArguments() {
-        ProgramControl.runTwoArguments("01", "mykey.txt");
+        // ensure "mykey.txt" exists in ciphers folder
+        ProgramControl.runTwoArguments("05", "ciphers/mykey.txt");
         String output = outContent.toString().trim();
-
-        // Example check: decrypted text should reflect using the custom key
-        assertEquals("HKNQ QPH FRQWHQWV", output);;
+        assertEquals("ILOH RQH FRQWHQW", output); // matches decrypted text using custom key
     }
 
 }

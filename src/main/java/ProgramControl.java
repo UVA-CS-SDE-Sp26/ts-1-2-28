@@ -12,7 +12,6 @@ public class ProgramControl {
         try {
 
             List<String> files = DataFileHandler.fileList();
-            files.sort(String::compareToIgnoreCase);
 
             if (files.isEmpty()) {
                 System.out.println("no files found");

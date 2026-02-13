@@ -29,21 +29,53 @@ public class Cipher {
         }
     }
     private static char decryptCharacter (char x, String key){
-//If character is not in key, just return it
+        //If character is not in key, just return it
+        char value = key.charAt(key.indexOf(x) + key.indexOf("/n"));//incomplete
         return 'a';
     }
 
     private static boolean verifyKey (String key2) {
-/*
-look for the newline, count the index, check the first 10 characters to be uppercase (then check
-index 26-36 to be lower case or numbers, if there are enough characters before the newline),
-lowercase (check 26-36 to be numbers if they don't run into the newline), or numbers; lowercase
-and numbers check for the uppercase and each other up until the newline too (so the default key is
-uppercase, lowercase, numbers but the provided keys could be just one of each or have 2 or 3 in
-any order). Keys with incomplete lowercase sections (or uppercase, or numbers) have all those
-characters ignored when that key is applied (and the decrypt method accounts for that)
- */
-        return false;
+        int newlineIndex = key2.indexOf("/n");
+        if (newlineIndex != -1) {
+            if (key2.startsWith("1234567890")){
+                String remaining = key2.substring(10,newlineIndex);
+                if (remaining.startsWith("ABCDEFGHIJKLMNOPQRSTUVWXYZ")){
+                    String stillRemaining = remaining.substring(26,newlineIndex - 10);
+                    return stillRemaining.equals("abcdefghijklmnopqrstuvwxyz");
+                }
+                else if (remaining.startsWith("abcdefghijklmnopqrstuvwxyz")){
+                    String stillRemaining = remaining.substring(26,newlineIndex - 10);
+                    return stillRemaining.equals("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+                }
+                else {return false;}
+            }
+            else if (key2.startsWith("ABCDEFGHIJKLMNOPQRSTUVWXYZ")){
+                String remaining = key2.substring(26,newlineIndex);
+                if (remaining.startsWith("1234567890")) {
+                    return remaining.substring(26, newlineIndex - 26).equals("abcdefghijklmnopqrstuvwxyz");
+                }
+                else if (remaining.startsWith("abcdefghijklmnopqrstuvwxyz")) {
+                    return remaining.substring(26, newlineIndex - 26).equals("1234567890");
+                }
+                else {return false;}
+            }
+            else if (key2.startsWith("abcdefghijklmnopqrstuvwxyz")){
+                String remaining = key2.substring(26,newlineIndex);
+                if (remaining.startsWith("1234567890")) {
+                    return remaining.substring(26, newlineIndex - 26).equals("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+                }
+                else if (remaining.startsWith("ABCDEFGHIJKLMNOPQRSTUVWXYZ")) {
+                    return remaining.substring(26, newlineIndex - 26).equals("1234567890");
+                }
+                else {return false;}
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
     }
     private static String fileReturn(String n) {//from DataFileHandler class, because that was hardcoded to only run from the docs folder
         // use n -> to int, find number in list from fileList

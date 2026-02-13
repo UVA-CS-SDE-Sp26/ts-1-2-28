@@ -179,7 +179,7 @@ class CipherTest {
         String result = Cipher.decrypt(data, key);
         assertEquals("/n !@#/n$ %^/n", result);
     }
-    /*Boiler-plate test
+    /*Boilerplate test
     @Test
     void testDecrypt() {
         String data = "";

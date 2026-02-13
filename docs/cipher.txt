@@ -16,13 +16,8 @@ Do I have to parse the key-file (either of them) into data? no
 Do I have a separate function that runs my decryption method on every character in the file? yes
 
 "Verifying" the provided key:
-look for the newline, count the index, check the first 10 characters to be uppercase (then check
-index 26-36 to be lower case or numbers, if there are enough characters before the newline),
-lowercase (check 26-36 to be numbers if they don't run into the newline), or numbers; lowercase
-and numbers check for the uppercase and each other up until the newline too (so the default key is
-uppercase, lowercase, numbers but the provided keys could be just one of each or have 2 or 3 in
-any order). Keys with incomplete lowercase sections (or uppercase, or numbers) have all those
-characters ignored when that key is applied (and the decrypt method accounts for that)
+look for the newline, count the index, checks for valid uppercase, lowercase, and numbers, in all
+combinations
 
 test verifying keys (15) with only:
 numbers, lower, or upper

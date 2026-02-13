@@ -28,12 +28,14 @@ class ProgramControlTest {
         String[] lines = output.split("\\r?\\n"); // split by newlines
 
         // should be exactly 3 lines (for 3 files)
-        assertEquals(3, lines.length, "Should print 3 files");
+        assertEquals(5, lines.length, "Should print 5 files");
 
         // check that each line has the correct format
-        assertEquals("01 file1.txt", lines[0]);
-        assertEquals("02 file2.txt", lines[1]);
-        assertEquals("03 file3.txt", lines[2]);
+        assertEquals("01 carnivore.cip", lines[0]);
+        assertEquals("02 carnivore.txt", lines[1]);
+        assertEquals("03 cointelpro.cip", lines[2]);
+        assertEquals("04 cointelpro.txt", lines[3]);
+        assertEquals("05 file1.txt", lines[4]);
     }
 
     @Test
@@ -43,19 +45,18 @@ class ProgramControlTest {
         String output = outContent.toString().trim();
 
         // decrypted content matches expected plaintext
-        assertEquals("FILE ONE CONTENT", output);
+        assertEquals("GJMF POF DPOFOU", output);
     }
 
+
     //fix this!!!
-    /*
     @Test
     void runTwoArguments() {
         ProgramControl.runTwoArguments("01", "mykey.txt");
         String output = outContent.toString().trim();
 
         // Example check: decrypted text should reflect using the custom key
-        assertEquals("EXPECTED DECRYPTED CONTENT", output);;
+        assertEquals("HKNQ QPH FRQWHQWV", output);;
     }
 
-     */
 }

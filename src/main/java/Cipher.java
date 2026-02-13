@@ -16,25 +16,31 @@ import java.util.List;
 public class Cipher {
     public static String decrypt (String data) {
         String key = fileReturn("1");
-        return decrypt (data, key);
+        return decrypt(data, key);
     }
     public static String decrypt (String data, String key){
         if (verifyKey(key)) {
             String decryptString = "";
-            decryptString = decryptString + decryptCharacter(data.charAt(0), key);
-            return "";
+            for (int i = 0; i < data.length() - 1; i++){
+                decryptString = decryptString + decryptCharacter(data.charAt(i), key);
+            }
+            return decryptString;
         }
         else {
-            return data; //include key validation here...
+            return data;
         }
     }
     private static char decryptCharacter (char x, String key){
-        //If character is not in key, just return it
-        char value = key.charAt(key.indexOf(x) + key.indexOf("/n"));//incomplete
-        return 'a';
+        //If character is not in key, just return it, otherwise decrypt it
+        if (key.indexOf(x) != -1) {
+            return key.charAt(key.indexOf("/n") + key.indexOf(x));
+        }
+        else {
+            return x;
+        }
     }
 
-    private static boolean verifyKey (String key2) {
+    private static boolean verifyKey(String key2) {
         int newlineIndex = key2.indexOf("/n");
         if (newlineIndex != -1) {
             if (key2.startsWith("1234567890")){

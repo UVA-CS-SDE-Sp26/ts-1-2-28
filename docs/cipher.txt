@@ -1,28 +1,27 @@
 String decipher-method (String data, String key) {run method (char, key)}
     takes a string and runs the char decipher-method for every character in the length
-        (for loop, string.IndexAt(i)) (ignore spaces and newlines)
+        (for loop, string.IndexAt(i)) (ignore spaces, newlines, and other non-valid characters)
 
 char decipher-method (char x, String key)
     takes a character, or a character and a text file converted to String (in a certain format)
-    returns the character deciphered
+    returns the character deciphered (character at the index:
+        (key.IndexOf(character) + key.IndexOf(newline)))
 
 boolean verify-key (String key)
     takes a key String and checks it's in the right format
 
-the character has an index in the key file (key.IndexOf(character) + key.IndexOf(newline))
 
-
-Do I have to parse the key-file (either of them) into data? no
+Do I have to parse the key-file (either of them) into data? no-> shouldn't, but apparently
 Do I have a separate function that runs my decryption method on every character in the file? yes
 
 "Verifying" the provided key:
-look for the newline, count the index, checks for valid uppercase, lowercase, and numbers, in all
+look for the newline, save the index, check for valid uppercase, lowercase, and numbers, in all
 combinations
 
 test verifying keys (15) with only:
 numbers, lower, or upper
 numbers and lower, numbers and upper, lower and upper
-lower and numbers, upper and numbers, upper and lower
+lower and numbers, upper and numbers, upper and lower;
 lower, upper, numbers; lower, numbers, upper;
 upper, lower, numbers; upper, numbers, lower;
 numbers, upper, lower; numbers, lower, upper;

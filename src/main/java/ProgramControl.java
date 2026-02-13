@@ -54,7 +54,12 @@ public class ProgramControl {
                 System.out.println("file is empty or not found");
                 return;
             }
-            String readable = Cipher.decrypt(content, parseKey(fileKey));
+            String alternateKey = parseKey(fileKey);
+            if (!Cipher.verifyKey(alternateKey)){
+                System.out.println("the alternate key is invalid or not in the correct format)");
+                return;
+            }
+            String readable = Cipher.decrypt(content, alternateKey);
             System.out.println(readable);
         } catch (IllegalArgumentException e) {
             System.out.println("error reading or deciphering file: " + e.getMessage());

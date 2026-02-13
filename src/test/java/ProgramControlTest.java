@@ -40,30 +40,26 @@ class ProgramControlTest {
 
     @Test
     void runOneArgument() {
-        ProgramControl.runOneArgument("05");
-
+        // ensure the file "data/carnivore.txt" exists and Cipher default key "ciphers/1"
+        ProgramControl.runOneArgument("05");// "02" points to carnivore.txt
         String output = outContent.toString().trim();
 
         // decrypted content matches expected plaintext
         assertEquals("GJMF POF DPOUFOU", output);
     }
 
-
-    //fix this!!!
     @Test
     void runTwoArguments() {
+        // ensure "mykey.txt" exists in ciphers folder
         String directoryPath = "./ciphers";
         File dir  = new File(directoryPath);
         File[] alternateKey = dir.listFiles((thing, name) -> name.equals("mykey.txt"));
         if (alternateKey.length == 1) {
             ProgramControl.runTwoArguments("05", alternateKey[0]);
             String output = outContent.toString().trim();
-            // Example check: decrypted text should reflect using the custom key
+            // decrypted text reflects using the custom key
             assertEquals("HKNG QPG EQPVGPV", output);
         }
-
-
-
 
     }
 

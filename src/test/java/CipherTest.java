@@ -175,6 +175,35 @@ class CipherTest {
         String result = Cipher.decrypt(data, key);
         assertEquals("\n !@#\n$ %^\n", result);
     }
+    @Test
+    void testDecrypt_incompleteUpperKey() {
+        String data = "gjshfGKKUV47853";
+        String key = "ABCDEFGHIJKLMNPQRSTUVWXYZ\nBCDEFGHIJKLMNPQRSTUVWXYZA";
+        String result = Cipher.decrypt(data, key);
+        assertEquals("gjshfGKKUV47853", result);
+    }
+    @Test
+    void testDecrypt_incompleteLowerKey() {
+        String data = "gjshfGKKUV47853";
+        String key = "abcdefghijklmnpqrstuvwxyz\nbcdefghijklmnpqrstuvwxyza";
+        String result = Cipher.decrypt(data, key);
+        assertEquals("gjshfGKKUV47853", result);
+    }
+    @Test
+    void testDecrypt_incompleteNumberKey() {
+        String data = "gjshfGKKUV47853";
+        String key = "123467890\n123467890";
+        String result = Cipher.decrypt(data, key);
+        assertEquals("gjshfGKKUV47853", result);
+    }
+    @Test
+    void testDecrypt_unbalancedKey() {
+        String data = "gjshfGKKUV47853";
+        String key = "ABCDEFGHIJKLMNPQRSTUVWXYZ\nBCDEFGHIJKLMNOPQRSTUVWXYZA";
+        String result = Cipher.decrypt(data, key);
+        assertEquals("gjshfGKKUV47853", result);
+    }
+
     /*Boilerplate test
     @Test
     void testDecrypt() {

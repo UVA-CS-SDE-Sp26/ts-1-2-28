@@ -19,6 +19,8 @@ public class Cipher {
         key = key.substring (0,key.length() - 1);//peculiarity of the file handler, remove the last newline
         return decrypt(data, key);
     }
+
+    //for a valid key, returns a decrypted string. for an invalid key, decrypts using the default key
     public static String decrypt (String data, String key){
         if (verifyKey(key)) {
             String decryptString = "";
@@ -45,7 +47,7 @@ public class Cipher {
             return decryptString;
         }
         else {
-            return data;
+            return decrypt(data);
         }
     }
     private static char decryptCharacter (char x, String key){

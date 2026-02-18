@@ -13,7 +13,7 @@ If a number and a .txt file: validate the number, validate the .txt file, and di
     terminal window
 
 Student A writes a class (possibly the main function) that calls Student C's class, which calls
-    Student B's class, which calls Student D's class. Student D's class returns a data type that
-    Student B's class uses and returns to Student C's class, which returns to Student A's class,
+    Student B's class and then Student D's class on the result. Student C's class returns a data type
+    that Student D's class uses and returns to Student C's class, which returns to Student A's class,
     which prints the result
-    A->C->B->D and back.
+    A->C->B->C->D->C->A

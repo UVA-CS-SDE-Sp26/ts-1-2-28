@@ -29,5 +29,7 @@ incomplete numbers, incomplete upper, incomplete lower
 
 test decrypts with data strings that include lots of new-lines and spaces
 
-
+Note for the TA's: Everything accredited to Brian Hardy(yachtx) until Wednesday 2/18, is my
+(Helen Hardy) own work and the result of a gitconfig file getting missed when I inherited this
+computer. It's been fixed for future assignments
 
